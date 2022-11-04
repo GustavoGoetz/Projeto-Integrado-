@@ -6,7 +6,7 @@
 ### Contexto Técnico
 [Comment] <> *Descrever o contexto técnino (tencnologias utilizadas...)
 
-Monitoramento do nivel de água da caixa d'água através de um microcontrolador ESP-32. <lb>
+Monitoramento do nivel de água da caixa d'água através de um microcontrolador ESP-32. <br>
 Dados enviados para um Broker MQTT.
 Dados consumidos por um cliente MQTT.
 
