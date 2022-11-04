@@ -1,11 +1,14 @@
 # Projeto integrado - Controle de nível de caixa d'água para poço artesiano
-![logo](https://user-images.githubusercontent.com/46695647/188506507-ac55d032-bbeb-4d26-8f20-af8af35fb45a.png)
 
 ### Contextualização
 [Comment] <> *Descrever o contexto de negócios 
 
 ### Contexto Técnico
 [Comment] <> *Descrever o contexto técnino (tencnologias utilizadas...)
+
+Monitoramento do nivel de água da caixa d'água através de um microcontrolador ESP-32.
+Dados enviados para um Broker MQTT.
+Dados consumidos por um cliente MQTT.
 
 ## Requisitos
 [Comment] <> *Descrever os requisitos funcionais e não funcionais
