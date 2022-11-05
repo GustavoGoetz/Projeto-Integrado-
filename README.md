@@ -32,8 +32,14 @@ O motor deve ser desligado automaticamente quando o nível da caixa chegar a 100
 O sistema deve permitir ligar ou desligar o motor remotamente quando o nível da caixa estiver entre 25 e 100%. Abaixo de 25% o motor não deve ser desligado para evitar falta de água. <br>
 
 ### Requisitos não funcionais
- RNF1 - ......
- 
+
+<b>RNF001 – Nível da caixa d’água</b><br>
+Através de boias será medido o nível da caixa. Serão utilizadas quatro boias e o nível deverá ser indicado de 25 em 25 por cento (4 níveis).<br>
+<b>RNF002 – Protocolo de comunicação MQTT</b><br>
+Será utilizado o protocolo de comunicação MQTT utilizando clientes MQTT e um broker MQTT na nuvem.<br>
+<b>RNF003 – ESP32</b><br>
+O sistema será desenvolvido utilizando o microcontrolador ESP32<br>
+
 ### Diagrama
 [Comment] <> *Apresentar diagramas (UML, funcionamento...)
 
