@@ -55,4 +55,7 @@ O sistema será desenvolvido utilizando o microcontrolador ESP32<br>
 5 - Verificar se o motor é acionado pelo client MQTT quando o nível estiver entre 25% e 100%.
 
 ## Changelog
-[Comment] <> *Descrever as mudanças, quem fez a mudança e quando.
+Versão   |  Data     | Responsável       | Change  <br>
+1.0      |  01/11/22 | Gustavo           |Readme completado <br>
+1.1      |  02/11/22 | Gustavo           |Conexão com wifi e MQTT <br>
+1.2      |  04/11/22 | Gustavo           |Leitura dos sensores <br>
