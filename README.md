@@ -48,11 +48,11 @@ O sistema será desenvolvido utilizando o microcontrolador ESP32<br>
 
 ## Testes
 
-1 - Teste da conexão com broker MQTT.
-2 - Teste dos sensores utilizados para monitorar o nível da caixa
-3 - Verificar se o motor é acionado quando o nível da caixa for menor que 25%
-4 - Verificar se o motor é desligado quando o nível da caixa atingir 100%
-5 - Verificar se o motor é acionado pelo client MQTT quando o nível estiver entre 25% e 100%.
+1 - Teste da conexão com broker MQTT.<br>
+2 - Teste dos sensores utilizados para monitorar o nível da caixa<br>
+3 - Verificar se o motor é acionado quando o nível da caixa for menor que 25%<br>
+4 - Verificar se o motor é desligado quando o nível da caixa atingir 100%<br>
+5 - Verificar se o motor é acionado pelo client MQTT quando o nível estiver entre 25% e 100%.<br>
 
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
