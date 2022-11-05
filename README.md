@@ -41,7 +41,8 @@ Será utilizado o protocolo de comunicação MQTT utilizando clientes MQTT e um 
 O sistema será desenvolvido utilizando o microcontrolador ESP32<br>
 
 ### Diagrama
-[Comment] <> *Apresentar diagramas (UML, funcionamento...)
+
+![diagrama](https://user-images.githubusercontent.com/46695647/200136950-279a5a30-f1a9-4d95-9d20-b016de873bc5.jpg)
 
 ### Descrição Funcional
 
