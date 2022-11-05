@@ -18,20 +18,19 @@ Dados consumidos por um cliente MQTT. <br>
 
 ### Requisitos funcionais
 
-<b>RF001 – Nível da caixa<\b><br>
-O sistema deve informar o nível da caixa d’água.
-RF002 – Acionar o motor
-O sistema deve permitir acionar o motor de forma remota.
-RF003 – Desligar o motor
-O sistema deve permitir desligar o motor de forma remota.
-RF004 – Acionamento do motor automaticamente.
-O motor deve ser acionado automaticamente quando o nível baixar de 25% para evitar o desabastecimento.
-RF005 – Desligar o motor
-O motor deve ser desligado automaticamente quando o nível da caixa chegar a 100%.
-RF006 – Acionamento do motor remoto
-O sistema deve permitir ligar ou desligar o motor remotamente quando o nível da caixa estiver entre 25 e 100%. Abaixo de 25% o motor não deve ser desligado para evitar falta de água.
+<b>RF001 – Nível da caixa</b><br>
+O sistema deve informar o nível da caixa d’água.<br>
+<b>RF002 – Acionar o motor</b> <br>
+O sistema deve permitir acionar o motor de forma remota.  <br>
+<b>RF003 – Desligar o motor</b> <br>
+O sistema deve permitir desligar o motor de forma remota. <br>
+<b>RF004 – Acionamento do motor automaticamente</b>  <br>
+O motor deve ser acionado automaticamente quando o nível baixar de 25% para evitar o desabastecimento. <br>
+<b>RF005 – Desligar o motor</b> <br>
+O motor deve ser desligado automaticamente quando o nível da caixa chegar a 100%. <br>
+<b>RF006 – Acionamento do motor remoto</b> <br>
+O sistema deve permitir ligar ou desligar o motor remotamente quando o nível da caixa estiver entre 25 e 100%. Abaixo de 25% o motor não deve ser desligado para evitar falta de água. <br>
 
- 
 ### Requisitos não funcionais
  RNF1 - ......
  
