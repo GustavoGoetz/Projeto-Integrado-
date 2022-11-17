@@ -18,6 +18,7 @@ const char* password = "liverpool";
 #define MQTT_PWD "sisdis2022"
 #define TOPICO_MOTOR "esp/motor"
 #define TOPICO_NIVEL "esp/nivel"
+#define TOPICO_STA_MOTOR "esp/status/motor"
 
 int motorStatus = 0;
 int sensor = 13;
@@ -25,6 +26,10 @@ int sensor1 = 12;
 int sensor2 = 14;
 int sensor3 = 27;
 int aux = 100;
+int prioridade = 0;
+int acionar_motor = 0;
+int externo = 0;
+char dado[1] = {0};
 
 WiFiClientSecure espClient;
 //WiFiClient espClient;
@@ -43,7 +48,8 @@ int readNivel() {
   if (estado  == 1 && estado1 == 1 && estado2 == 1 && estado3 == 1){ 
     aux = 100;
     Serial.println(aux);
-   digitalWrite(motor,LOW);
+    acionar_motor = 0;
+   //digitalWrite(motor,LOW);
     return aux;
   }else if (estado  == 1 && estado1 == 1 && estado2 == 1 && estado3 == 0){
     aux = 75;
@@ -56,15 +62,17 @@ int readNivel() {
   }else if (estado  == 1 && estado1 == 0 && estado2 == 0 && estado3 == 0){
     aux = 25;
     Serial.println(aux);
-    digitalWrite(motor,HIGH);
+    acionar_motor = 1;
+   // digitalWrite(motor,HIGH);
     return aux;
   }else if (estado  == 0 && estado1 == 0 && estado2 == 0 && estado3 == 0){
     aux = 0;
+    acionar_motor = 1;
     Serial.println(aux);
-    digitalWrite(motor,HIGH);
+    //digitalWrite(motor,HIGH);
     return aux;
   } else {
-    aux = 99999;
+    aux = 999;
     Serial.println(aux);
     return aux;
   }
@@ -74,6 +82,7 @@ int readNivel() {
 void mqtt_callback(char* topic, byte* payload, unsigned int length) 
 {
     String msg;
+    int val_motor;
   
     /* obtem a string do payload recebido */
     for(int i = 0; i < length; i++) 
@@ -88,37 +97,14 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length)
     /* toma ação dependendo da string recebida */
     if (msg.equals("1"))
     {
-        digitalWrite(motor, HIGH);
-        Serial.print("Motor ligado");
+       acionar_motor = 1;
     }
   
     if (msg.equals("0"))
-    {
-        digitalWrite(motor, LOW);    
-        Serial.print("Motor desligado"); 
+    {   
+      acionar_motor = 0;
     }
-}
 
-
-void setupMQTT(){
-  MQTT.setServer(MQTT_BROKER, MQTT_PORT);
-  MQTT.setCallback(mqtt_callback);    
-
-  while(!MQTT.connected())
-  {
-     Serial.println("Connecting to MQTT..");
-     //Serial.println(MQTT_BROKER);
-     if(MQTT.connect(MQTT_ID, MQTT_USER, MQTT_PWD))
-     {
-        Serial.println("Conectado!");
-        MQTT.subscribe(TOPICO_MOTOR);
-     }
-     else{
-        Serial.println("Falha ao conectar!");
-        Serial.print(MQTT.state());
-        delay(5000);
-     }
-  }
 }
 
 static const char *root_ca PROGMEM = R"EOF(
@@ -155,10 +141,28 @@ emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
 -----END CERTIFICATE-----
 )EOF";
 
-void setup() {
-  Serial.begin(115200);
-   pinMode(motor, OUTPUT);
-   digitalWrite(motor,LOW);
+void setupMQTT(){
+  MQTT.setServer(MQTT_BROKER, MQTT_PORT);
+  MQTT.setCallback(mqtt_callback);    
+
+  while(!MQTT.connected())
+  {
+     Serial.println("Connecting to MQTT..");
+     //Serial.println(MQTT_BROKER);
+     if(MQTT.connect(MQTT_ID, MQTT_USER, MQTT_PWD))
+     {
+        Serial.println("Conectado!");
+        MQTT.subscribe(TOPICO_MOTOR);
+     }
+     else{
+        Serial.println("Falha ao conectar!");
+        Serial.print(MQTT.state());
+        delay(5000);
+     }
+  }
+}
+
+void setupWifi(){
   // Wi-Fi 
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
@@ -167,23 +171,83 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
   espClient.setCACert(root_ca);
-  setupMQTT();
+
+}
+
+void setup() {
+  Serial.begin(115200);
+   pinMode(motor, OUTPUT);
+   digitalWrite(motor,LOW);
+   setupWifi();
+   setupMQTT();
+   sprintf(dado,"%d", motorStatus); 
+   MQTT.publish(TOPICO_MOTOR, dado);
 }
 
 void loop() {
   char nivel[3] = {0};
-  char dado1[1] = {0};
+  int valor_motor;
+  char text_status[20];
 
    int aux = readNivel();
    sprintf(nivel,"%d", aux); 
-   MQTT.publish(TOPICO_NIVEL, nivel);
-   delay(5000);
- // sprintf(dado1,"%d", motorStatus); 
- // MQTT.publish(TOPICO_MOTOR,dado1);
+   if(aux <= 25)
+   {
+    digitalWrite(motor,HIGH); 
+    motorStatus = 1;
+    acionar_motor = 1;
+    sprintf(dado,"%d", motorStatus); 
+    MQTT.publish(TOPICO_MOTOR, dado);
+    MQTT.publish(TOPICO_NIVEL, nivel);
+   }
+
+   if(aux> 25 && aux < 100)
+   {
+      if(acionar_motor == 0 )
+      {
+        digitalWrite(motor,LOW);
+      }
+      if(acionar_motor == 1)
+      {
+        digitalWrite(motor,HIGH);
+
+      }
+    MQTT.publish(TOPICO_NIVEL, nivel);
+    valor_motor = digitalRead(motor);
+
+   }
   
-  //motorStatus = 1;
-//  sprintf(dado1,"%d", motorStatus); 
- // MQTT.publish(TOPICO_MOTOR, dado1);
+   if(aux == 100)
+   {
+    digitalWrite(motor,LOW);
+    acionar_motor = 0;
+    motorStatus = 0;
+    sprintf(dado,"%d", motorStatus); 
+    MQTT.publish(TOPICO_MOTOR, dado);
+    MQTT.publish(TOPICO_NIVEL, nivel);
+   }
+
+   if(aux == 999)
+   {
+    Serial.println("Falha no sensor!");
+    digitalWrite(motor,LOW);
+    MQTT.publish(TOPICO_NIVEL, nivel);
+   }
+
+
+  motorStatus = digitalRead(motor);
+  if(motorStatus == 1)
+  {
+    strcpy(text_status,"Motor Ligado!");
+    MQTT.publish(TOPICO_STA_MOTOR, text_status);
+
+  }
+  else{
+    strcpy(text_status,"Motor Desligado!");
+    MQTT.publish(TOPICO_STA_MOTOR, text_status);  
+
+  }
+   delay(3000);
   Serial.println("Enviado dados para o Broker");
   MQTT.loop();
 
