@@ -105,6 +105,7 @@ Quando essa ordem não for respeitado devido algum problema nos sensores, no MQT
 Para realizar o teste foi acionado somente o sensor 4 e os demais foram desacionados. O motor foi desligado e no MQTT Dash indicou um erro na leitura.<br>
 
 ## Protótipo
+![WhatsApp Image 2022-11-21 at 12 44 10 (1)](https://user-images.githubusercontent.com/46695647/203999991-8c9ad55e-8fc0-4ddb-91ed-d29cdb2336b9.jpeg)
 ![WhatsApp Image 2022-11-21 at 12 44 10](https://user-images.githubusercontent.com/46695647/203999898-18b58d77-fc13-4c6a-985a-01553af6b5b0.jpeg)
 
 
