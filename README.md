@@ -65,6 +65,8 @@ Quando o nível da caixa estiver entre 50% e 100% o sistema permite desligar o m
 4 - Verificar se o motor é desligado quando o nível da caixa atingir 100%<br>
 5 - Verificar se o motor é acionado pelo client MQTT quando o nível estiver entre 25% e 100%.<br>
 
+# Descrição dos testes
+
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
 1.0      |  01/11/22 | Gustavo           |Readme completado <br>
