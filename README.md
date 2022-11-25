@@ -45,7 +45,18 @@ O sistema será desenvolvido utilizando o microcontrolador ESP32<br>
 ![diagrama](https://user-images.githubusercontent.com/46695647/200136950-279a5a30-f1a9-4d95-9d20-b016de873bc5.jpg)
 
 ### Descrição Funcional
-
+<br>
+O sistema possuí 4 sensores de nível de água.<br>
+<br>
+<b>Sensor 1 - 25% </b><br>
+<b>Sensor 2 – 50% </b><br>
+<b>Sensor 3 – 75% </b><br>
+<b>Sensor 4 – 100% </b><br>
+<br>
+Quando o sensor 1 é acionado, é enviado para o broker a informação de que a caixa está com 25% de capacidade. Quando o sensor 2 é acionado significa que a caixa tem 50% da capacidade e assim sucessivamente até chegar aos 100%.<br>
+Quando o nível da caixa atinge 25%, o motor deve ser acionado automaticamente. Ao atingir 100% o sistema deve desligar o motor automaticamente.<br>
+Quando o nível da caixa estiver entre 50% e 100% o sistema permite desligar o motor remotamente através de um comando.<br>
+<br>
 ## Testes
 
 1 - Teste da conexão com broker MQTT.<br>
