@@ -59,3 +59,5 @@ Versão   |  Data     | Responsável       | Change  <br>
 1.0      |  01/11/22 | Gustavo           |Readme completado <br>
 1.1      |  02/11/22 | Gustavo           |Conexão com wifi e MQTT <br>
 1.2      |  04/11/22 | Gustavo           |Leitura dos sensores <br>
+1.3      |  10/11/22 | Gustavo           |Finalização do código
+1.4      |  15/11/22 | Gustavo           |Realização dos testes
