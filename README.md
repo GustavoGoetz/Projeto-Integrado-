@@ -108,11 +108,8 @@ Para realizar o teste foi acionado somente o sensor 4 e os demais foram desacion
 ![WhatsApp Image 2022-11-21 at 12 44 10 (1)](https://user-images.githubusercontent.com/46695647/203999991-8c9ad55e-8fc0-4ddb-91ed-d29cdb2336b9.jpeg)
 ![WhatsApp Image 2022-11-21 at 12 44 10](https://user-images.githubusercontent.com/46695647/203999898-18b58d77-fc13-4c6a-985a-01553af6b5b0.jpeg)
 
-###Resultados no MQTT Dashboard
-
+### Resultados no MQTT Dashboard
 ![MQTT](https://user-images.githubusercontent.com/46695647/204000580-a95d3c51-c536-4ac5-9f1d-ba7d57ce1158.png)
-
-
 
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
@@ -121,3 +118,4 @@ Versão   |  Data     | Responsável       | Change  <br>
 1.2      |  04/11/22 | Gustavo           |Leitura dos sensores <br>
 1.3      |  10/11/22 | Gustavo           |Finalização do código  <br>
 1.4      |  15/11/22 | Gustavo           |Realização dos testes <br>
+1.5      |  25/11/22 | Gustavo           |Completado o readme <br>
