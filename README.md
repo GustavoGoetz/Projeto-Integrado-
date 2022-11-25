@@ -108,6 +108,11 @@ Para realizar o teste foi acionado somente o sensor 4 e os demais foram desacion
 ![WhatsApp Image 2022-11-21 at 12 44 10 (1)](https://user-images.githubusercontent.com/46695647/203999991-8c9ad55e-8fc0-4ddb-91ed-d29cdb2336b9.jpeg)
 ![WhatsApp Image 2022-11-21 at 12 44 10](https://user-images.githubusercontent.com/46695647/203999898-18b58d77-fc13-4c6a-985a-01553af6b5b0.jpeg)
 
+###Resultados no MQTT Dashboard
+
+![MQTT](https://user-images.githubusercontent.com/46695647/204000580-a95d3c51-c536-4ac5-9f1d-ba7d57ce1158.png)
+
+
 
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
