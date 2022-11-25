@@ -66,6 +66,43 @@ Quando o nível da caixa estiver entre 50% e 100% o sistema permite desligar o m
 5 - Verificar se o motor é acionado pelo client MQTT quando o nível estiver entre 25% e 100%.<br>
 
 ### Descrição dos testes
+<b>Teste de conexão com broker MQTT </b><br>
+Publicado uma string em um tópico de testes. Consumido o mesmo tópico e verificando se a string é a mesma que foi postada.<br>
+
+<b>Teste dos sensores </b><br>
+Os sensores são de contato seco. Testado a continuidade utilizando um multímetro.<br>
+
+<b>Teste do código da leitura dos sensores </b><br>
+Todos os sensores desacionados. Verificado o valor lido pelo código. Com todos os sensores em zero esperasse que o valor lido seja Zero.<br>
+Acionado somente o sensor 1. O valor esperado é 25%. O valor lido foi de 25%.<br>
+Acionado sensor 1 e sensor 2. O valor esperado é de 50 %. O valor lido foi de 50%<br>
+Acionado sensor 1, 2 e 3. O valor esperado é 75%. O valor lido foi de 75%.<br>
+Acionado todos os sensores. O valor esperado é 100%. O valor lido foi de 100%.<br>
+
+<b>Teste do motor </b><br>
+
+Acionado somente o sensor 1 para simular o nível da caixa d’água em 25%. O motor é simulado pelo led do ESP-32 (GPIO2). O led foi acionado quando o nível atinge 25%.<br>
+Acionado todos os sensores para simular o nível da caixa d’água em 100%. O motor simulado pelo led do ESP-32 foi desligado.<br>
+Acionado o sensor 1 e o motor foi acionado, acionado o sensor 2 e motor continuou acionado, acionado o sensor 3 e o motor continuou acionado , acionado o sensor 4 e o motor foi desligado.<br>
+Desacionado o sensor 4 e o motor continuo desligado, desacioando sensor 3 e o motor continuou desligado, desacionado sensor 2 e o motor foi religado pois a caixa atingiu 25%.<br>
+
+<b>Teste acionamento remoto </b><br>
+Acionado sensores 1 e 2 para simular o nível da caixa em 50%. Nesse momento o motor está acionado. Pressionado o botão para desligar o motor no MQTT Dashboard. O led foi desligado indicando que o motor foi desligado.<br>
+Pressionado o botão novamente e o motor foi religado.<br>
+Acionado sensores 1,2 e 3 para simular o nível da caixa em 75%. Acionado o botão no MQTT Dashboard e o motor foi desligado. Pressionado novamente e o motor foi religado.<br>
+Acionado somente o sensor 1 para simular o nível da caixa d’água em 25%. Pressionado o botão no MQTT Dash para desligar o motor. O sistema não permitiu desligar o motor conforme definido no RF004.<br>
+Acionado todos os sensores para simular o nível em 100%. Acionado o botão no MQTT Dash para acionar o motor. O sistema não permitiu acionar o motor, pois a caixa já está cheia conforme definido no RF005.<br>
+
+<b>Teste da leitura dos sensores </b><br>
+
+O sistema espera que os sensores sejam acionados na seguinte sequência: <br>
+1 – Sensor 1<br>
+2 – Sensor 2<br>
+3 – Sensor 3 <br>
+4 – Sensor 4<br>
+Quando o sensor 4 estiver acionado, esperasse que os sensores 1, 2 e 3 também estejam acionados, pois estão abaixo do sensor 4. Quando o sensor 3 estiver acionado, esperasse que o sensor 1 e 2 estejam acionados. E assim sucessivamente.<br>
+Quando essa ordem não for respeitado devido algum problema nos sensores, no MQTT Dash na parte que indica o nível da caixa será exibido “999”e o motor deve ser desligado automaticamente.<br>
+Para realizar o teste foi acionado somente o sensor 4 e os demais foram desacionados. O motor foi desligado e no MQTT Dash indicou um erro na leitura.<br>
 
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
