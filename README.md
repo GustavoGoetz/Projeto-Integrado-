@@ -104,6 +104,10 @@ Quando o sensor 4 estiver acionado, esperasse que os sensores 1, 2 e 3 também e
 Quando essa ordem não for respeitado devido algum problema nos sensores, no MQTT Dash na parte que indica o nível da caixa será exibido “999”e o motor deve ser desligado automaticamente.<br>
 Para realizar o teste foi acionado somente o sensor 4 e os demais foram desacionados. O motor foi desligado e no MQTT Dash indicou um erro na leitura.<br>
 
+## Protótipo
+![WhatsApp Image 2022-11-21 at 12 44 10](https://user-images.githubusercontent.com/46695647/203999898-18b58d77-fc13-4c6a-985a-01553af6b5b0.jpeg)
+
+
 ## Changelog
 Versão   |  Data     | Responsável       | Change  <br>
 1.0      |  01/11/22 | Gustavo           |Readme completado <br>
