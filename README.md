@@ -56,7 +56,7 @@ O sistema possuí 4 sensores de nível de água.<br>
 Quando o sensor 1 é acionado, é enviado para o broker a informação de que a caixa está com 25% de capacidade. Quando o sensor 2 é acionado significa que a caixa tem 50% da capacidade e assim sucessivamente até chegar aos 100%.<br>
 Quando o nível da caixa atinge 25%, o motor deve ser acionado automaticamente. Ao atingir 100% o sistema deve desligar o motor automaticamente.<br>
 Quando o nível da caixa estiver entre 50% e 100% o sistema permite desligar o motor remotamente através de um comando.<br>
-<br>
+
 ## Testes
 
 1 - Teste da conexão com broker MQTT.<br>
